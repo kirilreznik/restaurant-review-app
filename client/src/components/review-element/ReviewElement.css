@@ -1,0 +1,26 @@
+.review-element {
+  background-color: #354359;
+  border-bottom: 0.5px solid white;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline-end: 20px;
+  padding-inline-start: 20px;
+}
+.review-element:hover {
+  background-color: #636d7c;
+}
+.review-button-update,
+.review-button-delete {
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fca103;
+  font-weight: 600;
+  cursor: pointer;
+}
+.review-button-delete {
+  background-color: red;
+  color: white;
+}
