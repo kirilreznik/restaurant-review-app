@@ -15,57 +15,59 @@ app.listen(port, () => {
 //Get all restaraunts
 app.get("/restaurants", async (req, res) => {
   try {
-    const restaraunts = await pool.query("SELECT * FROM restaraunts");
-    res.json(restaraunts.rows);
+    const restaurants = await pool.query("SELECT * FROM restaurants");
+    res.json(restaurants.rows);
   } catch (err) {
     console.log(err);
   }
 });
-//Create restaraunts
+//Create restaurants
 app.post("/restaurants", async (req, res) => {
   try {
-    const { name, price_range } = req.body;
-    const newRestaraunt = await pool.query(
-      `INSERT INTO restaraunts (name,price_range) VALUES ($1,$2) RETURNING *`,
-      [name, price_range]
+    const { name, price_range, location } = req.body;
+    const newRestaurant = await pool.query(
+      "INSERT INTO restaurants (name,price_range,location) VALUES ($1,$2,$3) RETURNING *",
+      [name, price_range, location]
     );
-    res.json(newRestaraunt.rows);
+    res.json(newRestaurant.rows);
   } catch (err) {
     console.log(err);
   }
 });
-//Get restaraunt by id
+//Get restaurants by id
 app.get("/restaurants/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const restaraunt = await pool.query(
-      `SELECT * FROM restaraunts WHERE id=$1`,
+    const restaurants = await pool.query(
+      "SELECT * FROM restaurants WHERE id=$1",
       [id]
     );
-    res.json(restaraunt.rows);
+    res.json(restaurants.rows[0]);
   } catch (err) {
     console.log(err);
   }
 });
 
-//Delete restaraunt by id
+//Delete restaurants by id
+
 app.delete("/restaurants/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query(`DELETE FROM restaraunts WHERE id=$1`, [id]);
+    await pool.query("DELETE FROM restaurants WHERE id=$1", [id]);
     res.json({ response: "Deleted succsesfully" });
   } catch (err) {
     console.log(err);
   }
 });
-//Update restaraunt
+
+//Update restaurants
 app.put("/restaurants/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, price_range } = req.body;
+    const { name, price_range, location } = req.body;
     await pool.query(
-      `UPDATE restaraunts SET name=$1, price_range=$2  WHERE id=$3`,
-      [name, price_range, id]
+      "UPDATE restaurants SET name=$1, price_range=$2 , location = $3 WHERE id=$4",
+      [name, price_range, location, id]
     );
     res.json("UPDATED");
   } catch (err) {
