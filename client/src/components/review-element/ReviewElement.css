@@ -1,4 +1,4 @@
-.review-element {
+/* .review-element {
   background-color: #354359;
   border-bottom: 0.5px solid white;
   display: flex;
@@ -10,6 +10,7 @@
 }
 .review-element:hover {
   background-color: #636d7c;
+  cursor: pointer;
 }
 .review-button-update,
 .review-button-delete {
@@ -21,6 +22,75 @@
   cursor: pointer;
 }
 .review-button-delete {
+  background-color: red;
+  color: white;
+}
+ */
+.review-card {
+  width: 360px;
+  height: 180px;
+  background-color: #354359;
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 7px;
+  color: white;
+}
+.review-card:hover {
+  background-color: #636d7c;
+  cursor: pointer;
+}
+.card-top {
+  width: 90%;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+}
+
+.card-name {
+  width: 70%;
+}
+.price-range {
+  color: white;
+}
+@media only screen and (max-width: 600px) {
+  .review-card {
+    margin-right: 0px;
+  }
+}
+
+.card-bottom {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  height: 50%;
+  font-size: 20px;
+}
+.card-bottom-left {
+  width: 60%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+.card-buttons {
+  width: 30%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  align-items: flex-end;
+}
+.card-button,
+.card-button-red {
+  height: 35px;
+  width: 60px;
+  border-radius: 7px;
+  border: none;
+  background-color: #fca103;
+}
+.card-button-red {
   background-color: red;
   color: white;
 }

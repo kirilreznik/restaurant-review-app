@@ -18,6 +18,11 @@ function HomePage() {
         <ReviewElement />
         <ReviewElement />
         <ReviewElement />
+        <ReviewElement />
+        <ReviewElement />
+        <ReviewElement />
+        <ReviewElement />
+        <ReviewElement />
       </div>
     </div>
   );
