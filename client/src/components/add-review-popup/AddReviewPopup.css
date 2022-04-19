@@ -1,0 +1,57 @@
+.popup {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+}
+
+.popup-inner {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  background-color: #354359;
+  padding: 20px;
+  margin-top: 240px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 1.5ms;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-inner input {
+  height: 30px;
+  margin: auto;
+}
+
+.price-dropdown {
+  width: 170px;
+  height: 36px;
+}
+
+.details-input {
+  width: 78%;
+}
+
+@media only screen and (max-width: 700px) {
+  .popup-inner {
+    flex-direction: column;
+    width: 50%;
+  }
+  .inputs {
+    flex-direction: column;
+  }
+  .buttons {
+    margin-top: 7px;
+  }
+  .popup-inner input {
+    margin-bottom: 3px;
+  }
+}

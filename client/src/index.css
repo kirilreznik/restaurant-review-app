@@ -3,10 +3,32 @@ body {
   font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.orange-button {
+  height: 36px;
+  margin: auto;
+  height: 35px;
+  width: 60px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  margin-left: 2px;
+  background-color: #fca103;
+}
+.red-button {
+  height: 36px;
+  margin: auto;
+  height: 35px;
+  width: 60px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  margin-left: 2px;
+  background-color: red;
+  color: white;
 }
