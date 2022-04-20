@@ -16,22 +16,24 @@ function HomePage() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5001/restaurants`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        dispatch(setAllReviews(data));
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err.statusText !== "OK") {
-          console.log(err);
-        }
-      });
-  }, []);
+    if (!addReviewPopup) {
+      fetch(`http://localhost:5001/restaurants`)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          dispatch(setAllReviews(data));
+          setLoading(false);
+        })
+        .catch((err) => {
+          if (err.statusText !== "OK") {
+            console.log(err);
+          }
+        });
+    }
+  }, [addReviewPopup]);
 
   return (
     <div>
