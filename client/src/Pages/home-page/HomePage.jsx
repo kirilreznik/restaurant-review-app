@@ -1,15 +1,37 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAllReviews } from "../../redux/slices/reviewsSlice";
 import ReviewElement from "../../components/review-element/ReviewElement";
 import Header from "../../components/Header/Header";
-import { useState } from "react";
 import AddReviewPopup from "../../components/add-review-popup/AddReviewPopup";
 import "../home-page/HomePage.css";
+
 function HomePage() {
   const [addReviewPopup, setAddReviewPopup] = useState(false);
-
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const { allReviews } = useSelector((state) => state.reviews);
   const handleAddButtonClick = () => {
     setAddReviewPopup(!addReviewPopup);
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:5001/restaurants`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        dispatch(setAllReviews(data));
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err.statusText !== "OK") {
+          console.log(err);
+        }
+      });
+  }, []);
 
   return (
     <div>
@@ -37,16 +59,13 @@ function HomePage() {
         <p>Explore reviews</p>
       </div>
       <div className="review-container">
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
-        <ReviewElement />
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          allReviews?.map((review) => {
+            return <ReviewElement key={review.id} review={review} />;
+          })
+        )}
       </div>
     </div>
   );
